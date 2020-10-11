@@ -1,0 +1,32 @@
+FROM ubuntu:xenial
+
+RUN apt-get update -y && apt-get upgrade -y
+RUN apt-get install -y --force-yes \
+    apache2 \
+    php \
+    php-mysql \
+    php-apcu \
+    php-intl \
+    imagemagick \
+    php-cli \
+    php-curl \
+    git \
+    libapache2-mod-php \
+    php-xml \
+    php-mbstring \
+    wget
+
+VOLUME ["/var/www", "/var/log/apache2", "/etc/apache2"]
+
+RUN wget -P /tmp/ https://releases.wikimedia.org/mediawiki/1.33/mediawiki-1.33.4.tar.gz
+
+RUN mkdir -p /var/lib/mediawiki
+RUN tar -xvzf /tmp/mediawiki-*.tar.gz -C /var/lib/
+RUN mv /var/lib/mediawiki-*/* /var/lib/mediawiki
+
+EXPOSE 80
+EXPOSE 443
+
+COPY entrypoint.sh /
+RUN ["chmod", "+x", "/entrypoint.sh"]
+ENTRYPOINT ["/entrypoint.sh"]

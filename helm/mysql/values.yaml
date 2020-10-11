@@ -1,0 +1,6 @@
+replicaCount: 2
+image: "mysql"
+imageTag: "5.7.30"
+
+strategy:
+  type: RollingUpgrade

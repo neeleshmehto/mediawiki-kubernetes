@@ -1,0 +1,5 @@
+replicaCount: 2
+wikimediaimage: mediawiki
+version: 1.0.1
+image:
+  repository: mediawiki/mediawiki
