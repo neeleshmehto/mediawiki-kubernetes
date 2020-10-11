@@ -31,4 +31,4 @@ helm install -f helm/mysql/values.yaml mysql helm/mysql
 helm install -f helm/mediawiki/values.yaml mediawiki helm/mediawiki
 
 
-Step6: for the user input have been created opetion to insert the deployment type (BlueGreen/RollingUpgrade)
+Step6: user input have been created opetion to insert the deployment type (BlueGreen/RollingUpgrade)
